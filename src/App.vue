@@ -1,32 +1,41 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app
+    style="
+    background: linear-gradient(#3a7bd5,#ffffff);
+  "
+  >
+    <v-content>
+      <v-container class="fill-height" fluid>
+        <router-view> </router-view>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
+<script>
+import axios from "axios";
+
+export default {
+  name: "App",
+  data() {
+    return {
+      token: null,
+      drawer: null,
+    };
+  },
+
+  created() {
+    if (Object.prototype.hasOwnProperty.call(localStorage, "blog_token")) {
+      axios.defaults.headers.common["Authorization"] =
+        "Bearer " + localStorage.getItem("blog_token");
+    }
+  },
+};
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Manrope&family=Montserrat:ital,wght@0,100;0,200;1,200&family=Permanent+Marker&display=swap");
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.v-application {
+  font-family: "Abel", sans-serif !important;
 }
 </style>
