@@ -2,7 +2,7 @@
 
 VueJs: SPA para iniciar sesión con localstorage 🚧
 
-### Pre-requisitos 📋
+## Pre-requisitos 📋
 * Editor de texto
 * Entorno JavaScript que nos permite ejecutar en el servidor
 
